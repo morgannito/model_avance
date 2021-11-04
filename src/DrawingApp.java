@@ -47,10 +47,10 @@ public class DrawingApp extends Canvas {
             public void mousePressed(MouseEvent e) {
                 System.out.println("mouse pressed at " + e.getX() + " " + e.getY());
                 if (coinflip == 1){
-                    list_shape.add(new Rectangle(e.getX(),e.getY(),100,100));
+                    list_shape.add(new Creeper(e.getX(),e.getY(),2));
                     coinflip = 2;
                 }else{
-                    list_shape.add(new Circle(e.getX(),e.getY(),100));
+                    list_shape.add(new Creeper_red(e.getX(),e.getY(),2));
                     coinflip = 1;
                 }
                 System.out.println(list_shape);
@@ -60,7 +60,6 @@ public class DrawingApp extends Canvas {
         frame.pack();
         frame.setVisible(true);
     }
-
     void refresh() {
         this.update(this.getGraphics());
     }
