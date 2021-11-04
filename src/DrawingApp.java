@@ -3,10 +3,15 @@ import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
+import dessin.*;
 
-class DrawingApp extends Canvas {
+public class DrawingApp extends Canvas {
     JFrame frame;
+    Rectangle rectangle ;
+    Circle circle ;
+    ArrayList<Shape> list_shape = new ArrayList<>();
 
     public static void main(String[] args) {
         new DrawingApp();
@@ -14,9 +19,14 @@ class DrawingApp extends Canvas {
 
     public DrawingApp() {
         this.initFrame();
+         rectangle = new Rectangle(150,100,100,100);
+         circle = new Circle(150,250,50);
+         list_shape.add(rectangle);
+         list_shape.add(circle);
     }
 
     void initFrame() {
+
         frame = new JFrame("My Drawing");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -33,11 +43,12 @@ class DrawingApp extends Canvas {
         });
         buttonPanel.add(clearButton);
 
-        var drawingApp = this;
+        DrawingApp drawingApp = this;
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 System.out.println("mouse pressed at " + e.getX() + " " + e.getY());
+                list_shape.add(new Rectangle(e.getX(),e.getY(),100,100));
                 drawingApp.refresh();
             }
         });
@@ -51,7 +62,9 @@ class DrawingApp extends Canvas {
     }
 
     public void paint(Graphics g) {
-        g.fillOval(150, 100, 100, 100);
-        g.fillRect(150, 250, 100, 100);
+        for (Shape dessin : list_shape) {
+            dessin.draw(g);
+        }
     }
 }
+
