@@ -11,6 +11,7 @@ public class DrawingApp extends Canvas {
     JFrame frame;
     Rectangle rectangle ;
     Circle circle ;
+    int coinflip;
     ArrayList<Shape> list_shape = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -18,11 +19,8 @@ public class DrawingApp extends Canvas {
     }
 
     public DrawingApp() {
+        coinflip = 1;
         this.initFrame();
-         rectangle = new Rectangle(150,100,100,100);
-         circle = new Circle(150,250,50);
-         list_shape.add(rectangle);
-         list_shape.add(circle);
     }
 
     void initFrame() {
@@ -38,21 +36,27 @@ public class DrawingApp extends Canvas {
 
         JButton clearButton = new JButton("Clear");
         clearButton.addActionListener((ActionEvent e) -> {
+            list_shape.clear();
             System.out.println("Clear shapes");
             refresh();
         });
         buttonPanel.add(clearButton);
-
         DrawingApp drawingApp = this;
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 System.out.println("mouse pressed at " + e.getX() + " " + e.getY());
-                list_shape.add(new Rectangle(e.getX(),e.getY(),100,100));
+                if (coinflip == 1){
+                    list_shape.add(new Rectangle(e.getX(),e.getY(),100,100));
+                    coinflip = 2;
+                }else{
+                    list_shape.add(new Circle(e.getX(),e.getY(),100));
+                    coinflip = 1;
+                }
+                System.out.println(list_shape);
                 drawingApp.refresh();
             }
         });
-
         frame.pack();
         frame.setVisible(true);
     }

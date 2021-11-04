@@ -5,10 +5,10 @@ public class Rectangle implements Shape {
 
     int x;
     int y;
-    float width;
-    float height;
+    int width;
+    int height;
 
-    public Rectangle(int x, int y, float width, float height) {
+    public Rectangle(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -35,7 +35,7 @@ public class Rectangle implements Shape {
         return width;
     }
 
-    public void setWidth(float width) {
+    public void setWidth(int width) {
         this.width = width;
     }
 
@@ -43,12 +43,12 @@ public class Rectangle implements Shape {
         return height;
     }
 
-    public void setHeight(float height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
     @Override
     public void draw(Graphics g) {
-        g.fillRect(150, 250, 100, 100);
+        g.fillRect(x, y, width, height);
     }
 }

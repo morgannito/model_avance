@@ -6,9 +6,9 @@ public class Circle implements Shape {
 
     int x ;
     int y ;
-    float radius;
+    int radius;
 
-    public Circle(int x, int y, float radius) {
+    public Circle(int x, int y, int radius) {
         this.x = x;
         this.y = y;
         this.radius = radius;
@@ -33,13 +33,13 @@ public class Circle implements Shape {
         return radius;
     }
 
-    public void setRadius(float radius) {
+    public void setRadius(int radius) {
         this.radius = radius;
     }
 
 
     @Override
     public void draw(Graphics g) {
-        g.fillOval(150, 100, 100, 100);
+        g.fillOval(x, y, 100, 100);
     }
 }
