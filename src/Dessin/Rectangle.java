@@ -1,5 +1,6 @@
 package Dessin;
 import java.awt.*;
+import java.util.List;
 
 public class Rectangle implements Shape {
 
@@ -50,5 +51,10 @@ public class Rectangle implements Shape {
     @Override
     public void draw(Graphics g) {
         g.fillRect(x, y, width, height);
+    }
+
+    @Override
+    public List<Shape> getChildren() {
+        return null;
     }
 }

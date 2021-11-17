@@ -15,6 +15,8 @@ public class DrawingApp extends Canvas {
 //    int coinflip;
     ArrayList<Shape> list_shape = new ArrayList<>();
     ShapeFactory myFactory;
+    GroupShape groupShapes = new GroupShape();
+    GroupFactory groupFactory;
 
     public static void main(String[] args) {
         new DrawingApp();
@@ -27,13 +29,10 @@ public class DrawingApp extends Canvas {
     }
 
     void initFrame() {
-
         frame = new JFrame("My Drawing");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         this.setPreferredSize(new Dimension(400, 400));
         frame.add(this, BorderLayout.CENTER);
-
         JPanel buttonPanel = new JPanel();
         frame.add(buttonPanel, BorderLayout.PAGE_END);
 
@@ -54,11 +53,21 @@ public class DrawingApp extends Canvas {
         });
         buttonPanel.add(circleButton);
 
+        // Button Groupe
+        JButton groupeButton = new JButton("Groupe");
+        groupeButton.addActionListener((ActionEvent e) -> {
+            myFactory = new GroupFactory(100,100,50);
+            // dessin factory
+            refresh();
+        });
+        buttonPanel.add(groupeButton);
+
+
         // Button Clear
         JButton clearButton = new JButton("Clear");
         clearButton.addActionListener((ActionEvent e) -> {
             list_shape.clear();
-            System.out.println("Clear shapes");
+            System.out.println("Clear");
             refresh();
         });
 

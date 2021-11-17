@@ -1,6 +1,6 @@
 package Dessin;
-
 import java.awt.*;
+import java.util.List;
 
 public class Circle implements Shape {
 
@@ -41,5 +41,10 @@ public class Circle implements Shape {
     @Override
     public void draw(Graphics g) {
         g.fillOval(x, y, 100, 100);
+    }
+
+    @Override
+    public List<Shape> getChildren() {
+        return null;
     }
 }
