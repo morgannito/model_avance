@@ -9,8 +9,7 @@ public class RectangleFactory implements ShapeFactory {
 
     @Override
     public Shape makeShape(int x, int y) {
-        return new Rectangle(x, y, width, height
-        );
+        return new Rectangle(x, y, width, height);
     }
 }
 
