@@ -1,4 +1,4 @@
-package dessin;
+package Dessin;
 import java.awt.*;
 
 public class Rectangle implements Shape {
