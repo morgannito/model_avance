@@ -29,6 +29,7 @@ public class Creeper implements Shape{
         g.fillRect(this.x+(4*this.size),this.y+(12*this.size),this.size*4,this.size*12); //left part
         g.fillRect(this.x+(8*this.size),this.y+(8*this.size),this.size*8,this.size*12); //middle part
         g.fillRect(this.x+(16*this.size),this.y+(12*this.size),this.size*4,this.size*12); //right part
+
     }
 
     @Override

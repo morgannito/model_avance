@@ -14,9 +14,7 @@ public class GroupShape implements Shape {
 
     @Override
     public void draw(Graphics g) {
-        shapes.forEach((d)->{
-            d.draw(g);
-        });
+        for (Shape d : shapes) d.draw(g);
     }
 
     @Override
